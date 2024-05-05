@@ -1,0 +1,78 @@
+.card{
+    flex: 1 1 18%;
+    max-width: 18%;
+    min-width: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background-color: #d8fad1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale up the card slightly */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Optionally, increase the shadow for better effect */
+  }
+
+.heartIcon{
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cover{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.content{
+    padding: 16px;
+}
+
+.title{
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.category, .author{
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+.bottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.btn{
+    display: block;
+    width: 90%;
+    border: none;
+    padding: 8px 0 ;
+    background-color: var(--bg-green);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 16px;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover{
+        background-color: #005D03;
+    }
+}

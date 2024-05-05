@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    list-style: none;
+}
+
+.link{
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+

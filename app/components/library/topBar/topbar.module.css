@@ -1,0 +1,86 @@
+.Container{
+    width: 100%;
+    padding: 20px 60px;
+    
+}
+.topContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 0 ;
+}
+
+.logo{
+    height: 40px;
+}
+
+.searchContainer{
+    background-color:var(--bg-gray);
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.input{
+    border: none;
+    height: 80%;
+    flex: 8;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    background: transparent;
+}
+
+.button{
+    flex: 1;
+   border: none;
+   background: transparent;
+   font-size: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.button:hover{
+    cursor: pointer;
+    background: transparent;
+}
+
+.savedContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.savedContainerCount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-green);
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
+}
+
+.btnSesion{
+    color: var(--bg-green);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    background: transparent;
+    border: none;
+
+    &:hover{
+        cursor: pointer;
+        background: transparent;
+    }
+}

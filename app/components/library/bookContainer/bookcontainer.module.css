@@ -1,0 +1,8 @@
+.bookCardContainer{
+    padding: 20px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 16px; 
+}

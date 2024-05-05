@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CiSearch } from 'react-icons/ci'
 import { FiHeart } from 'react-icons/fi'
-import styles from './Topbar.module.css'
+import styles from './topbar.module.css'
 import NavBar from './navbar/NavBar';
 import { signOut, useSession } from 'next-auth/react';
 

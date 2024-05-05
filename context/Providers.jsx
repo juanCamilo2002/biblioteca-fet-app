@@ -1,5 +1,5 @@
 import SessionAuthProvider from "./SessionAuthProvider";
-import { SidebarProvider } from "./SideBarProvider";
+import {SidebarProvider} from "./SidebarProvider";
 
 const Providers = ({ children }) => {
     return (

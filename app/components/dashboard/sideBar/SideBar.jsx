@@ -5,8 +5,8 @@ import styles from "./sidebar.module.css";
 import { RiShutDownLine } from 'react-icons/ri';
 import MenuLink from "./menuLink/MenuLink";
 import Image from "next/image";
-import { useSidebar } from "@/context/SideBarProvider";
 import { signOut } from "next-auth/react";
+import { useSidebar } from "@/context/SidebarProvider";
 
 const SideBar = () => {
     const { isOpen, toggleSidebar } = useSidebar();

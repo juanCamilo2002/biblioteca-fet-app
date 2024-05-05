@@ -6,7 +6,7 @@ const Right = () => {
     <div className={styles.container}>
       <div className={styles.back}>
         <Image
-          src="/logo-Fet.png"
+          src="/Logo-Fet.png"
           alt="logo-fet"
           className={styles.img}
           width={400}

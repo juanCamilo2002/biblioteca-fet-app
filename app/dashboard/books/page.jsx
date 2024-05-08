@@ -1,7 +1,9 @@
+import BooksDatatable from "@/app/components/dashboard/books/booksdatatable/BooksDatatable";
+
 const BooksView = () => {
   return (
     <div>
-        books
+        <BooksDatatable />
     </div>
   )
 }

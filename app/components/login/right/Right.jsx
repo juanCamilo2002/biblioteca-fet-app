@@ -9,8 +9,8 @@ const Right = () => {
           src="/Logo-FET.png"
           alt="logo-fet"
           className={styles.img}
-          width={400}
-          height={200}
+          width={300}
+          height={130}
         />
         <h1 className={styles.title}>Biblioteca</h1>
       </div>

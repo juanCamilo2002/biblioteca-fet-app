@@ -1,6 +1,6 @@
 .card{
     flex: 1 1 18%;
-    max-width: 18%;
+    max-width: 250px;
     min-width: 250px;
     border-radius: 5px;
     overflow: hidden;

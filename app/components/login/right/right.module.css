@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  
+    border-radius: 0 5px 5px 0 ;
 }
 
 .back{
@@ -12,8 +12,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     background-color: var(--bg-white);
     color: var(--bg-white);

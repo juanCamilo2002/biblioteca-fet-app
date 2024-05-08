@@ -10,9 +10,9 @@ import Loading from '../components/loading/Loading';
 const LoginPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  if ( status === 'loading'){
+  if (status === 'loading') {
     return <Loading />
-  
+
   }
   if (status === 'authenticated' && session.user.data.isAdmin) {
     return router.push("/dashboard");
@@ -24,9 +24,11 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-    <Left />
-    <Right />
-  </div>
+      <div className={styles.wrapper}>
+        <Left />
+        <Right />
+      </div>
+    </div>
   );
 }
 

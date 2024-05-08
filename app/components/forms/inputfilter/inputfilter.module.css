@@ -1,0 +1,41 @@
+.authorSelector {
+    position: relative;
+}
+
+.authorSelector input[type="text"] {
+    width: 250px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.authorSelector input[type="text"]:focus {
+    border-color: var(--bg-green);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 4px;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+}
+
+.optionsList li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.optionsList li:hover {
+    background-color: #f0f0f0;
+}

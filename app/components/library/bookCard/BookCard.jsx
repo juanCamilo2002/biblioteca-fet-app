@@ -8,14 +8,14 @@ const BookCard = ({ book }) => {
     <div className={styles.card}>
       <CiHeart size={30} color="white" className={styles.heartIcon} />
       <Image
-        src={book.image ? book.image : "https://via.placeholder.com/250x400/4543t4j"}
+        src={book.image ? book.image : "https://via.placeholder.com/250x300/CBC7C68"}
         alt=""
         className={styles.cover}
         width={1000}
-        height={400}
+        height={300}
         style={{
           width: '100%',
-          height: '400px',
+          height: '300px',
           objectFit: 'cover'
         }}
       />
@@ -26,7 +26,7 @@ const BookCard = ({ book }) => {
 
       </div>
       <div className={styles.bottom}>
-        <Link href={`/viewbook/${book._id}`} className={styles.btn}>Ver Más</Link>
+        <Link href={`/library/viewbook/${book._id}`} className={styles.btn}>Ver Más</Link>
       </div>
 
     </div>

@@ -1,0 +1,51 @@
+.container {
+    flex: 1;
+    padding: 20px;
+    max-width: 400px;
+    min-width: 200px;
+    flex-wrap: wrap;
+    background-color: var(--bg-white);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .top {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .span {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-green);
+            color: var(--bg-white);
+        }
+    }
+
+    .center {
+        .span {
+            font-size: 20px;
+            font-weight: 600;
+           
+        }
+    }
+
+    .bottom {
+        font-size: 16px;
+        font-weight: 300;
+    }
+}
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

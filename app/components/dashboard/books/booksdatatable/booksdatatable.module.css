@@ -1,0 +1,75 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 0;
+}
+
+.titleBook{
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 25px;
+    color: #333;
+}
+
+
+.btnAddBook{
+    display: flex;
+    align-items: center;
+    width: 158px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--bg-green);
+    margin-bottom: 20px;
+    padding-right: 16px;
+    color: var(--bg-white);
+}
+
+.btnAddBook:hover{
+    background-color: var(--bg-green-dark);
+}
+
+
+
+.btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnEdit{
+    background-color: var(--bg-green);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnDelete{
+    cursor: pointer;
+    background-color: #fd4d4d;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    
+}
+
+.btnEdit, .btnDelete{
+    color: var(--bg-white);
+    margin: 4px;
+}
+
+

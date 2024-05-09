@@ -1,12 +1,12 @@
 import styles from "./layout.module.css";
 import SideBar from "../components/dashboard/sideBar/SideBar";
 import { CiSearch } from "react-icons/ci";
-import PrivateRoute from "../components/PrivateAdminRoute";
+import PrivateAdminRoute from "../components/PrivateAdminRoute";
 
 
 const Layout = ({ children }) => {
   return (
-    <PrivateRoute isAdmin>
+    <PrivateAdminRoute >
       <div className={styles.container}>
       <SideBar />
       <div className={styles.content}>
@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
         </div>
       </div>
     </div>
-    </PrivateRoute>
+    </PrivateAdminRoute>
   )
 }
 

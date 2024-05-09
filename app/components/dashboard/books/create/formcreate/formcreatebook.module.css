@@ -1,17 +1,44 @@
 .bookFormContainer {
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px;
     border-radius: 5px;
     background-color: white;
     
+    
 }
 
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 16px;
+
+    .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: var(--bg-green);
+        border-radius: 50%;
+        font-size: 20px;
+        color: white;
+    }
+
+    .span{
+        font-size: 24px;
+        font-weight: 600;
+    
+    }
+}
 .bookForm {
     display: flex;
     flex-direction: column;
 }
 .formGroupContainer{
     display: flex;
+    align-items: flex-start;
     margin-bottom: 16px;
     gap: 16px;
 }
@@ -19,47 +46,80 @@
     margin-bottom: 16px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .label {
     margin-bottom: 8px;
 }
 
-.input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 250px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
-}
 
-.input[type="text"]:focus {
-    border-color: var(--bg-green);
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-}
-
-.error {
-    color: red;
-    font-size: 0.8rem;
-    margin-top: 4px;
+.bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 16px;
+    gap: 16px;
 }
 
 .button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    align-self: flex-end;
+    width: 200px;
+    padding: 15px 20px;
+    background-color: var(--bg-green);
     color: #fff;
     border: none;
+    font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #0a6407;
 }
 
 .button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+
+.cancel {
+    align-self: flex-end;
+    width: 200px;
+    padding: 12px 20px;
+    background-color: rgb(109, 108, 108);
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cancel:hover {
+    background-color: #cacaca;
+    color: black;
+}
+
+.cancel:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.imagePlaceholder{
+    width: 250px;
+    height: 400px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ccc;
+    object-fit: cover;
 }

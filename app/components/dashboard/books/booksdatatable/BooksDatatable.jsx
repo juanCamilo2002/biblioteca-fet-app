@@ -51,7 +51,7 @@ const BooksDatatable = () => {
     },
     {
       name: "Autor",
-      selector: (row) => row.author,
+      selector: (row) => row.author.name,
       sortable: true,
     },
     {

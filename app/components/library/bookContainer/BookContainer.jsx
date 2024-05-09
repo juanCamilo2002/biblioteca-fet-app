@@ -16,6 +16,7 @@ const BookContainer = () => {
 
         fetchBooks();
     },[])
+    console.log(books)
     return (
         <div className={styles.bookCardContainer}>
             {books.map((book) => (

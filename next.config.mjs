@@ -10,6 +10,10 @@ const nextConfig = {
             {
               protocol: 'https',
               hostname: 'api-biblioteca-tau.vercel.app',
+            },
+            {
+              protocol: 'https',
+              hostname: 'fet-node.s3.us-east-2.amazonaws.com',
             }
           ],
       },

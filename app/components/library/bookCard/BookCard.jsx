@@ -11,18 +11,18 @@ const BookCard = ({ book }) => {
         src={book.image ? book.image : "https://via.placeholder.com/250x300/CBC7C68"}
         alt=""
         className={styles.cover}
-        width={1000}
-        height={300}
+        width={800}
+        height={400}
         style={{
           width: '100%',
-          height: '300px',
+          height: '400px',
           objectFit: 'cover'
         }}
       />
       <div className={styles.content}>
         <h2 className={styles.title}>{book.title}</h2>
         <p className={styles.category}>materia: {book.materia}</p>
-        <p className={styles.author}>autor: {book.author}</p>
+        <p className={styles.author}>autor: {book.author.name}</p>
 
       </div>
       <div className={styles.bottom}>

@@ -10,9 +10,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
-import { createBook, getAuthors,  uploadFile } from '@api';
+import { createBook, getAuthors, uploadFile } from '@api';
 import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const schemaCreateBook = Yup.object().shape({
   title: Yup.string().required('Titulo es requerido'),
@@ -72,7 +73,7 @@ const FormCreateBook = () => {
         imageUrl = await uploadFile(session.user.data.token, image, toast);
       }
 
-      const data = {...values, image: imageUrl };
+      const data = { ...values, image: imageUrl };
       await createBook(session.user.data.token, data, toast);
       resetForm();
       router.push('/dashboard/books');
@@ -124,7 +125,14 @@ const FormCreateBook = () => {
               multiple={false}
             >
               {!image && <span>Arrastra una imagen o haz click para seleccionar una</span>}
-              {image && <img src={image.dataURL} alt="book" className={styles.imagePlaceholder}/>}
+              {image &&
+                <Image
+                  src={image.dataURL}
+                  alt="book"
+                  className={styles.imagePlaceholder}
+                  width={250}
+                  height={400} />
+              }
             </InputDropZone>
             <div className={styles.formGroupContainer}>
               <Input label="Titulo" name="title" />

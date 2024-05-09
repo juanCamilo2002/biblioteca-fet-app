@@ -3,7 +3,7 @@ import { Formik, Form, } from 'formik';
 import styles from './formcreatebook.module.css';
 import InputFilter from '@/app/components/forms/inputfilter/InputFilter';
 import Input from '@/app/components/forms/input/Input';
-import InputDropZone from '@/app/components/forms/dropzone/InputDropZone';
+import InputDropZone from '@/app/components/forms/dropzone/InputDropzone';
 import Select from '@/app/components/forms/select/Select';
 import { BiBookAdd } from "react-icons/bi";
 import { useRouter } from 'next/navigation';

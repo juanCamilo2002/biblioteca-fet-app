@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone';
 import styles from "./inputdropzone.module.css";
 
-const InputDropZone = ({ children, onDrop, accept, multiple } ) => {
+const InputDropZone = ({ children, onDrop, accept, multiple, custom } ) => {
     const onDropCallback = useCallback(acceptedFiles => {
         if (onDrop) {
           onDrop(acceptedFiles);
@@ -18,7 +18,7 @@ const InputDropZone = ({ children, onDrop, accept, multiple } ) => {
       return (
         <div
           {...getRootProps()}
-          className={`${styles.container} ${isDragAccept ? styles.isDragAccept: isDragReject ? styles.isDragReject : isFocused ? styles.isFocused : ''}`}
+          className={`${styles.container} ${ custom && styles.custom} ${isDragAccept ? styles.isDragAccept: isDragReject ? styles.isDragReject : isFocused ? styles.isFocused : ''}`}
         >
           <input {...getInputProps()} />
           {children}

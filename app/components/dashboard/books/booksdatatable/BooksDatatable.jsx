@@ -78,7 +78,7 @@ const BooksDatatable = () => {
       name: "Acciones",
       cell: (row) => (
         <div className={styles.btns}>
-          <Link href={"/updatebook/" + row._id} className={styles.btnEdit} >
+          <Link href={"/books/update/" + row._id} className={styles.btnEdit} >
             <BiEdit size={20} />
           </Link>
           <button className={styles.btnDelete} onClick={() => handleDelete(row._id)}>
@@ -113,7 +113,13 @@ const BooksDatatable = () => {
           fixedHeader
         />
       </div>
-      {openModal && <Modal handleClose={closeModal} action={onDeleted} />}
+      {openModal &&
+        <Modal
+          handleClose={closeModal}
+          action={onDeleted}
+          title="Eliminar libro"
+          message="¿Estás seguro que deseas eliminar este libro?"
+        />}
     </div>
   );
 }

@@ -1,10 +1,20 @@
+"use client";
 import styles from './tablenews.module.css'
 import { GrSchedule } from 'react-icons/gr'
 import { getReservas } from '@api';
 import { formatterDate } from '@/lib/utils/formatterDate';
+import { useEffect, useState } from 'react';
 
-const TableNews = async () => {
-  const newReservations = await getReservas(true);
+const TableNews = () => {
+  const [newReservations, setNewReservations] = useState([]);
+
+  useEffect(() => {
+    const fetchReservations = async () => {
+      const reservations = await getReservas(true);
+      setNewReservations(reservations);
+    };
+    fetchReservations();
+  }, []);
   return (
     <div>
       <div className={styles.container}>

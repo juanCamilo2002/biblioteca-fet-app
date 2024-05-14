@@ -5,9 +5,13 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { BsPlus } from "react-icons/bs";
 import { BiEdit } from "react-icons/bi";
 import DataTable from "react-data-table-component";
+import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { getUsers } from "@api";
 
 const UserTable = () => {
-
+    const [data, setData] = useState([]);
+    const { data: session } = useSession();
     const columnas = [
         {
           name: "Nombre",
@@ -59,16 +63,17 @@ const UserTable = () => {
         },
       ];
        
-      const data =[
-        {
-            name: "Joan Galindo",
-            email:"salseo98@outlook.com",
-            telefono:"3115312202",
-            semestre:"Noveno",
-            codigo:"20231016",
-            programa:"Software",
-        }
-      ]
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await getUsers(session.user.data.token);
+            setData(data);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+        fetchData();
+      }, []);
 
 
       const paginationComponentOptions = {

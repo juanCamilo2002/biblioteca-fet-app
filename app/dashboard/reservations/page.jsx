@@ -2,9 +2,7 @@ import ReservationTable from "@/app/components/dashboard/reservations/reservatio
 
 const Reservations = () => {
   return (
-    <div>
       <ReservationTable />
-    </div>
   );
 };
 

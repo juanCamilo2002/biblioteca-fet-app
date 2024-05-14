@@ -1,10 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './inputfilter.module.css';
 
-const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, label, error}) => {
-  const [inputValue, setInputValue] = useState('');
+const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, label, error, defaultValue }) => {
+  const [inputValue, setInputValue] = useState(defaultValue || ''); // Establecer el valor por defecto
   const [showOptions, setShowOptions] = useState(false);
   const optionsListRef = useRef(null);
+
+  // Utilizar useEffect para actualizar el valor del input si cambia el defaultValue
+  useEffect(() => {
+    setInputValue(defaultValue || ''); // Actualizar el valor del input con el defaultValue
+  }, [defaultValue]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -14,7 +19,7 @@ const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, 
 
   const handleOptionClick = (id, value) => {
     onValueSelect(id);
-    setInputValue(value); // Autocompletar el nombre del autor en el campo de entrada
+    setInputValue(value);
     setShowOptions(false);
   };
 
@@ -30,6 +35,8 @@ const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, 
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+
 
   useEffect(() => {
     // Si el valor del input está vacío, también deselecciona el valor seleccionado
@@ -52,6 +59,7 @@ const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, 
         className={error ? styles.errorInput : ''}
         onChange={handleInputChange}
         placeholder={placeholder}
+        autoComplete="off"
       />
       {showOptions && filteredValues.length > 0 && (
         <ul className={styles.optionsList} ref={optionsListRef}>

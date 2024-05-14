@@ -3,8 +3,6 @@ import styles from './select.module.css';
 
 const Select = ({ label, name, values }) => {
     return (
-
-
         <div className={styles.formGroup}>
             <label className={styles.label} htmlFor={name}>{label}</label>
             <Field as="select" name={name} className={styles.select}>

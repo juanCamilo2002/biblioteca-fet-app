@@ -10,19 +10,22 @@ import { BiEdit } from "react-icons/bi";
 import Modal from "@/app/components/modal/Modal";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
+import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
 
 
 const BooksDatatable = () => {
   const [books, setBooks] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [pending, setPending] = useState(true);
   const [id, setId] = useState(null);
   const { data: session } = useSession();
 
   useEffect(() => {
     const fetchBooks = async () => {
+      setPending(true); 
       const data = await getBooks();
       setBooks(data);
-
+      setPending(false);
     };
     fetchBooks();
   }, []);
@@ -111,6 +114,8 @@ const BooksDatatable = () => {
           pagination
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
+          progressPending={pending} 
+          progressComponent={<LoadingDatatable/>}
         />
       </div>
       {openModal &&

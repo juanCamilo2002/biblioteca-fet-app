@@ -11,11 +11,14 @@ import { BsPlus } from "react-icons/bs";
 import Modal from "@/app/components/modal/Modal";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
 
 const ReservationTable = () => {
   const { data: session } = useSession();
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
+  const [pending, setPending] = useState(true);
+  
   const [id, setId] = useState(null);
 
   const handleDelete = async (id) => {
@@ -81,8 +84,10 @@ const ReservationTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setPending(true);
         const data = await getReservas();
         setData(data);
+        setPending(false);
       } catch (error) {
         console.error(error);
       }
@@ -113,6 +118,8 @@ const ReservationTable = () => {
           pagination
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
+          progressPending={pending} 
+          progressComponent={<LoadingDatatable/>}
         />
       </div>
       {openModal &&

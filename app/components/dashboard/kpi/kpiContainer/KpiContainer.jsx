@@ -7,20 +7,24 @@ import { GiBookshelf } from "react-icons/gi";
 import { HiOutlineSaveAs } from 'react-icons/hi'
 import { use, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import LoadingKpi from "@/app/components/loading/loadingkpi/LoadingKpi";
 
 const KpiContainer = () => {
     const [bookMostReserv, setBookMostReserv] = useState({});
     const [totalBooks, setTotalBooks] = useState({});
     const [reservationsMonthly, setReservationsMonthly] = useState({});
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const getStats = async () => {
             try {
+                setLoading(true);
                 const bookMostReservResponse = await getBookMostReserv();
                 const totalBooksResponse = await getCountBooksRegister();
                 const reservationsMonthlyResponse = await getReservasCountMonth();
                 setBookMostReserv(bookMostReservResponse);
                 setTotalBooks(totalBooksResponse);
                 setReservationsMonthly(reservationsMonthlyResponse);
+                setLoading(false);
 
             } catch (error) {
                 toast.error("Error al obtener las estadisticas")
@@ -64,6 +68,7 @@ const KpiContainer = () => {
                     icon={stat.icon}
                     placeholder={stat.placeholder}
                     maxLength={25}
+                    loading={loading}
                 />
             ))}
         </div>

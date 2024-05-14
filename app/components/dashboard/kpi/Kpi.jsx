@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 import styles from './kpi.module.css';
+import LoadingKpi from '../../loading/loadingkpi/LoadingKpi';
 
-const Kpi = ({stat, name, label, icon, placeholder, maxLength}) => {
+const Kpi = ({ stat, name, label, icon, placeholder, maxLength, loading }) => {
   const [truncatedStat, setTruncatedStat] = useState(stat);
   const [truncatedPlaceholder, setTruncatedPlaceholder] = useState(placeholder);
   const containerRef = useRef(null);
@@ -42,18 +43,26 @@ const Kpi = ({stat, name, label, icon, placeholder, maxLength}) => {
   }, [placeholder, maxLength]);
   return (
     <div className={styles.container} ref={containerRef}>
-      <div className={styles.top}>
-        <span className={styles.span}>{name}</span>
-        <div className={styles.icon}>
-          {icon}
-        </div>
-      </div>
-      <div className={styles.center}>
-        <span className={styles.span}>{truncatedStat ? truncatedStat : truncatedPlaceholder }</span>
-      </div>
-      <div className={styles.bottom}>
-        <span>{label}</span>
-      </div>
+      {
+        loading ?
+          <LoadingKpi /> :
+          (
+            <>
+              <div className={styles.top}>
+                <span className={styles.span}>{name}</span>
+                <div className={styles.icon}>
+                  {icon}
+                </div>
+              </div>
+              <div className={styles.center}>
+                <span className={styles.span}>{truncatedStat ? truncatedStat : truncatedPlaceholder}</span>
+              </div>
+              <div className={styles.bottom}>
+                <span>{label}</span>
+              </div>
+            </>
+          )
+      }
     </div>
   );
 }

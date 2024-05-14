@@ -8,10 +8,12 @@ import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { getUsers } from "@api";
+import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
 
 const UserTable = () => {
     const [data, setData] = useState([]);
     const { data: session } = useSession();
+    const [pending, setPending] = useState(true);
     const columnas = [
         {
           name: "Nombre",
@@ -66,8 +68,10 @@ const UserTable = () => {
       useEffect(() => {
         const fetchData = async () => {
           try {
+            setPending(true);
             const data = await getUsers(session.user.data.token);
             setData(data);
+            setPending(false);
           } catch (error) {
             console.log(error);
           }
@@ -100,6 +104,8 @@ const UserTable = () => {
           pagination
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
+          progressPending={pending} 
+          progressComponent={<LoadingDatatable/>}
         />
       </div>
     </div>

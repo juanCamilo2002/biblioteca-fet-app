@@ -7,8 +7,13 @@
     flex: 10;
     padding: 20px 40px;
     background-color: var(--bg-gray);
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
+    padding-left: 130px;
+    transition: all 0.1s ease;
+
+    &.active{
+        padding-left: 300px;
+    }
 }
 
 .containerSearch {
@@ -50,3 +55,34 @@
 .inputSearch:focus-within {
     border: 1px solid var(--bg-green);
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        position: relative;
+        width: 100%;
+    }
+
+    .content {
+        flex: 10;
+        padding: 20px 40px;
+        background-color: var(--bg-gray);
+        max-width: 100vw;
+        min-height: 100vh;
+        padding-left: 40px;
+
+        &.active{
+            padding-left: 40px;
+        }
+
+    }
+
+    .containerSearch {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+

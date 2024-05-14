@@ -10,7 +10,7 @@
     -webkit-box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.75);
-    position: relative;
+    position: fixed;
     transition: all 0.1s ease;
 
     &.active {
@@ -46,11 +46,12 @@
             .button {
                 padding: 10px;
                 justify-content: center;
-                
+
                 gap: 0;
                 border-radius: 5px;
                 font-weight: 600;
-                .span{
+
+                .span {
                     font-size: 0;
                 }
             }
@@ -90,7 +91,7 @@
     .image {
         width: 100%;
         object-fit: contain;
-        
+
     }
 }
 
@@ -156,13 +157,13 @@
         display: flex;
         align-items: center;
         gap: 10px;
-      
+
         border-radius: 5px;
         transition: all 0.3s ease;
-       
+
         font-family: 'Roboto', sans-serif;
 
-        .span{
+        .span {
             font-size: 18px;
         }
 
@@ -171,4 +172,86 @@
             color: var(--bg-white);
         }
     }
+}
+
+
+@media screen and (max-width: 768px) {
+    .aside {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        background-color: var(--bg-white);
+        /* Ajusta el color de fondo según tu diseño */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 2;
+        transition: all 0.5s ease;
+
+        &.active {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--bg-white);
+            /* Ajusta el color de fondo según tu diseño */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 2;
+            transition: all 0.5s ease;
+    
+        }
+
+        .logo {
+            display: none;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            .listItems{
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+                .listItem{
+                    .link{
+                        padding: 10px;
+                        justify-content: center;
+                        font-size: 0;
+                        gap: 0;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+        .session{
+            display: flex;
+            border: none;
+            padding-top: 0;
+            .button{
+                gap: 0;
+                border-radius: 5px;
+                font-weight: 600;
+                .span{
+                    font-size: 0;
+                }
+            }
+        }
+        .btnToggle {
+            display: none;
+        }
+    }
+
+
+
 }

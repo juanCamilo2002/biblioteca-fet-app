@@ -77,7 +77,7 @@ const FormCreateReservation = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.icon}>
+        <div className={styles.iconHeader}>
           <BiBookAdd />
         </div>
         <span className={styles.span}>Añadir una reservación </span>

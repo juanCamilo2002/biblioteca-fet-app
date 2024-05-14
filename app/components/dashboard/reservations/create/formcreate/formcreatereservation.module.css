@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,35 +7,37 @@
     background-color: white;
     padding: 40px 20px;
     border-radius: 5px;
-}
 
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
-    gap: 16px;
-
-    .icon{
+    .header {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
-        background-color: var(--bg-green);
-        border-radius: 50%;
-        font-size: 20px;
-        color: white;
-    }
+        margin-bottom: 16px;
+        gap: 16px;
 
-    .span{
-        font-size: 24px;
-        font-weight: 600;
-    
-    }   
+        .iconHeader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-green);
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+        }
+
+        .span {
+            font-size: 24px;
+            font-weight: 600;
+
+        }
+    }
 }
 
-.formGroupContainer{
+
+
+.formGroupContainer {
     display: flex;
     align-items: flex-start;
     margin-bottom: 16px;
@@ -43,7 +45,7 @@
 }
 
 
-.bottom{
+.bottom {
     display: flex;
     justify-content: center;
     align-items: center;

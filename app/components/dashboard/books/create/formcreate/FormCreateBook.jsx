@@ -1,53 +1,22 @@
 "use client";
 import { Formik, Form, } from 'formik';
 import styles from './formcreatebook.module.css';
-import InputFilter from '@/app/components/forms/inputfilter/InputFilter';
-import Input from '@/app/components/forms/input/Input';
-import InputDropZone from '@/app/components/forms/dropzone/InputDropzone';
-import Select from '@/app/components/forms/select/Select';
 import { BiBookAdd } from "react-icons/bi";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import * as Yup from 'yup';
-import { useEffect, useState } from 'react';
-import { createBook, getAuthors, uploadFile } from '@api';
+import {  useState } from 'react';
+import { createBook,  uploadFile } from '@api';
 import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
-
-const schemaCreateBook = Yup.object().shape({
-  title: Yup.string().required('Titulo es requerido'),
-  subtitulo: Yup.string().required('Subtitulo es requerido'),
-  n_asignatura: Yup.string().required('Nombre de asignatura es requerido'),
-  codBook: Yup.string().required('Codigo de libro es requerido'),
-  author: Yup.string().required('Autor es requerido'),
-  materia: Yup.string().required('Materia es requerido'),
-  publisher: Yup.string().required('Editorial es requerido'),
-  ISBN: Yup.string().required('ISBN es requerido'),
-  ISSN: Yup.string().required('ISSN es requerido'),
-  status: Yup.boolean().required('Estado es requerido'),
-  unidad: Yup.number().required('Unidades es requerido'),
-  numberPages: Yup.number().required('Numero de paginas es requerido'),
-  language: Yup.string().required('Lenguaje es requerido'),
-  description: Yup.string().required('Descripcion es requerido'),
-  fechaPublicacion: Yup.date().required('Fecha de publicacion es requerido'),
-});
+import schemaCreateBook from './SchemaValidateCreateBook';
+import BooksFormFields from './booksformfields/BooksFormFields';
 
 
 const FormCreateBook = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const [image, setImage] = useState(null);
-  const [authors, setAuthors] = useState([]);
-
-  useEffect(() => {
-    const fetchAuthors = async () => {
-      const authors = await getAuthors();
-      setAuthors(authors);
-    };
-    fetchAuthors();
-  }, []);
-
+ 
   const initialValues = {
     title: '',
     subtitulo: '',
@@ -72,7 +41,6 @@ const FormCreateBook = () => {
       if (image) {
         imageUrl = await uploadFile(session.user.data.token, image, toast);
       }
-
       const data = { ...values, image: imageUrl };
       await createBook(session.user.data.token, data, toast);
       resetForm();
@@ -82,20 +50,6 @@ const FormCreateBook = () => {
       toast.error('Error creating book');
     }
   };
-
-
-  const handleDrop = (acceptedFiles) => {
-    const file = acceptedFiles[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setImage({
-        file: file,
-        dataURL: event.target.result,
-      });
-    };
-    reader.readAsDataURL(file);
-  };
-
 
   return (
     <div className={styles.bookFormContainer}>
@@ -110,73 +64,10 @@ const FormCreateBook = () => {
         onSubmit={handleSubmit}
         validationSchema={schemaCreateBook}
       >
-        {({ isSubmitting, values, errors, setFieldValue }) => (
+        {({values, errors}) => (
 
           <Form className={styles.bookForm}>
-            <h5>Portada</h5>
-            <InputDropZone
-              onDrop={handleDrop}
-              accept={
-                {
-                  'image/jpeg': [],
-                  'image/png': []
-                }
-              }
-              multiple={false}
-            >
-              {!image && <span>Arrastra una imagen o haz click para seleccionar una</span>}
-              {image &&
-                <Image
-                  src={image.dataURL}
-                  alt="book"
-                  className={styles.imagePlaceholder}
-                  width={250}
-                  height={400} />
-              }
-            </InputDropZone>
-            <div className={styles.formGroupContainer}>
-              <Input label="Titulo" name="title" />
-              <Input label="Subtitulo" name="subtitulo" />
-              <Input label="Nombre de asignatura" name="n_asignatura" />
-            </div>
-            <div className={styles.formGroupContainer}>
-              <Input label="Código de libro" name="codBook" type="number" />
-              <InputFilter
-                label="Autor"
-                name="author"
-                placeholder="Buscar autor"
-                error={errors.author}
-                values={authors}
-                selectedValue="name"
-                onValueSelect={(id, value) => values.author = id}
-              />
-
-              <Input label="Materia" name="materia" />
-            </div>
-            <div className={styles.formGroupContainer}>
-              <Input label="Editorial" name="publisher" />
-              <Input label="ISBN" name="ISBN" />
-              <Input label="ISSN" name="ISSN" />
-            </div>
-            <div className={styles.formGroupContainer}>
-              <Select label="estado" name="status" values={
-                [{
-                  name: 'Activo',
-                  value: true
-                },
-                {
-                  name: 'Inactivo',
-                  value: false
-                }]
-              } />
-              <Input label="Unidades" name="unidad" type="number" />
-              <Input label="Numero de paginas" name="numberPages" type="number" />
-            </div>
-            <div className={styles.formGroupContainer}>
-              <Input label="Lenguaje" name="language" />
-              <Input label="Descripcion" name="description" />
-              <Input label="Fecha de publicacion" name="fechaPublicacion" type="date" />
-            </div>
+            <BooksFormFields values={values} errors={errors} image={image} setimage={setImage}/>
             <div className={styles.bottom}>
               <Link href="/dashboard/books" className={styles.cancel}>
                 Cancelar

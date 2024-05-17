@@ -1,54 +1,53 @@
-.bookFormContainer {
-    margin: 0 auto;
-    padding: 30px;
-    border-radius: 5px;
-    background-color: white;
-    
-    
-}
-
-.header{
+.container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 16px;
-    gap: 16px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 40px 20px;
+    border-radius: 5px;
 
-    .icon{
+    .header {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        height: 50px;
-        background-color: var(--bg-green);
-        border-radius: 50%;
-        font-size: 20px;
-        color: white;
-    }
+        margin-bottom: 16px;
+        gap: 16px;
 
-    .span{
-        font-size: 24px;
-        font-weight: 600;
-    
+        .iconHeader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--bg-green);
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+        }
+
+        .span {
+            font-size: 24px;
+            font-weight: 600;
+
+        }
     }
 }
-.bookForm {
-    display: flex;
-    flex-direction: column;
-}
 
 
-.bottom{
+
+
+.bottom {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     margin-top: 16px;
     gap: 16px;
 }
 
 .button {
-    align-self: flex-end;
-    width: 200px;
+    flex: 1;
     padding: 15px 20px;
     background-color: var(--bg-green);
     color: #fff;
@@ -70,8 +69,7 @@
 
 
 .cancel {
-    align-self: flex-end;
-    width: 200px;
+    flex: 1;
     padding: 12px 20px;
     background-color: rgb(109, 108, 108);
     color: #fff;
@@ -94,4 +92,3 @@
     background-color: #ccc;
     cursor: not-allowed;
 }
-

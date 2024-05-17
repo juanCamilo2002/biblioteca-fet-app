@@ -4,7 +4,6 @@ import SideBar from "../components/dashboard/sideBar/SideBar";
 import { CiSearch } from "react-icons/ci";
 import PrivateAdminRoute from "../components/PrivateAdminRoute";
 import { useSidebar } from "@/context/SidebarProvider";
-import { useState } from "react";
 
 
 const Layout = ({ children }) => {

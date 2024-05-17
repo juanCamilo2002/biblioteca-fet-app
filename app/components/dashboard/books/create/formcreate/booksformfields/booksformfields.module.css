@@ -1,0 +1,6 @@
+.formGroupContainer{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}

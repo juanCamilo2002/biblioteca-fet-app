@@ -42,7 +42,7 @@ const UserTable = () => {
         },
         {
           name: "Programa Académico",
-          selector: (row) => row.programa,
+          selector: (row) => row.Programa,
           sortable: true,
         },
         {
@@ -92,7 +92,7 @@ const UserTable = () => {
         <h1 className={styles.titleBook}>Usuarios</h1>
       <div className={styles.container}>
         <div className={styles.btnContainer}>
-          <Link href="/" className={styles.btnAddUser}>
+          <Link href="/users/create" className={styles.btnAddUser}>
             <BsPlus size={20} />
             Agregar Usuario
           </Link>
@@ -105,7 +105,9 @@ const UserTable = () => {
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
           progressPending={pending} 
+          responsive
           progressComponent={<LoadingDatatable/>}
+          style={{maxWidth: 700}}
         />
       </div>
     </div>

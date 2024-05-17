@@ -37,30 +37,6 @@
     display: flex;
     flex-direction: column;
 }
-.formGroupContainer{
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 16px;
-    gap: 16px;
-}
-
-.formGroupContainerImage{
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-    gap: 16px;
-}
-.formGroup {
-    margin-bottom: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.label {
-    margin-bottom: 8px;
-}
-
 
 .bottom{
     display: flex;
@@ -119,15 +95,3 @@
     cursor: not-allowed;
 }
 
-.imagePlaceholder{
-    width: 250px;
-    height: 400px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    color: #ccc;
-    object-fit: cover;
-}

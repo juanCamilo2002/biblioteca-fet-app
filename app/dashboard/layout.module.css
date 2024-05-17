@@ -4,15 +4,16 @@
 
 
 .content {
-    flex: 10;
     padding: 20px 40px;
     background-color: var(--bg-gray);
     min-height: 100vh;
     padding-left: 130px;
     transition: all 0.1s ease;
+    width: 100%;
 
     &.active{
         padding-left: 300px;
+    
     }
 }
 

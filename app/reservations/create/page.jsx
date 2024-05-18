@@ -1,11 +1,14 @@
 import FormCreateReservation from "@/app/components/dashboard/reservations/create/formcreate/FormCreateReservation";
 import styles from "./page.module.css";
+import PrivateAdminRoute from "@/app/components/PrivateAdminRoute";
 
 const CreateReservationPage = () => {
   return (
-    <div className={styles.container}>
+    <PrivateAdminRoute>
+      <div className={styles.container}>
         <FormCreateReservation />
-    </div>
+      </div>
+    </PrivateAdminRoute>
   )
 }
 

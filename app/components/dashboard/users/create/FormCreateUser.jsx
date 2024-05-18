@@ -9,6 +9,7 @@ import { createUser } from "@api";
 import { useRouter } from "next/navigation";
 import UserFormFields from "./userformfields/UserFormFields";
 import schemaCreateUser from "./SchemaValidations";
+import Formheader from "@/app/components/forms/formheader/Formheader";
 
 const FormCreateUser = () => {
     const { data: session } = useSession();
@@ -37,18 +38,13 @@ const FormCreateUser = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.iconHeader}>
-          <BiBookAdd />
-        </div>
-        <span className={styles.span}>Añadir un usuario</span>
-      </div>
+     <Formheader icon={<BiBookAdd />} text="Añadir usuario" />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={schemaCreateUser}
       >
-        {({ isSubmitting, values, errors }) => (
+        {({ isSubmitting }) => (
           <Form className={styles.bookForm}>
             <UserFormFields />
             <div className={styles.bottom}>

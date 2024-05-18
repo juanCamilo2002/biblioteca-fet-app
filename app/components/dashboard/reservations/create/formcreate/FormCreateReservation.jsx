@@ -12,6 +12,7 @@ import InputFilter from "@/app/components/forms/inputfilter/InputFilter";
 import * as Yup from 'yup';
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Formheader from "@/app/components/forms/formheader/Formheader";
 
 const schemaCreateReservation = Yup.object().shape({
   bookId: Yup.string().required('Libro es requerido'),
@@ -76,12 +77,7 @@ const FormCreateReservation = () => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.iconHeader}>
-          <BiBookAdd />
-        </div>
-        <span className={styles.span}>Añadir una reservación </span>
-      </div>
+      <Formheader icon={<BiBookAdd />} text="Crear reservación" />
       {books && users && (
         <Formik
           initialValues={initialValues}

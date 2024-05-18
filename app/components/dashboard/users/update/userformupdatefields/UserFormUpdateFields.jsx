@@ -1,63 +1,80 @@
-import Input from "@/app/components/forms/input/Input";
-import styles from "./userformfields.module.css";
-import Select from "@/app/components/forms/select/Select";
-import { ErrorMessage, Field } from "formik";
+"use client";
+import InputNormal from "@/app/components/forms/inputNormal/InputNormal";
+import styles from "./userformupdatefields.module.css";
+import SelectNomal from "@/app/components/forms/selectNormal/SelectNormal";
+import { ErrorMessage } from "formik";
 
-const UserFormFields = () => {
+const UserFormUpdateFields = ({ formik }) => {
   return (
     <div>
       <div className={styles.formGroupContainer}>
-        <Input
+        <InputNormal
           label="Nombre"
           type="text"
           name="name"
           placeholder="Nombre"
+          value={formik.values.name}
+          onChange={formik.handleChange}
         />
 
-        <Input
+        <InputNormal
           label="Teléfono"
           type="text"
           name="telefono"
           placeholder="Teléfono"
+          value={formik.values.telefono}
+          onChange={formik.handleChange}
         />
       </div>
       <div className={styles.formGroupContainer}>
         <div className={styles.inputContainer}>
           <label htmlFor="email" className={styles.label}>Correo Electrónico </label>
-          <Field
+          <input
             type="email"
             name="email"
             className={styles.input}
+            placeholder="Correo Electrónico"
+            value={formik.values.email}
+            onChange={formik.handleChange}
           />
-          <ErrorMessage name="email" component="div" className={styles.error} />
+          <div className={styles.error}>
+          </div>
         </div>
 
       </div>
       <div className={styles.formGroupContainer}>
-        <Input
+        <InputNormal
           label="Código"
           type="text"
           name="codigo"
           placeholder="Código"
+          value={formik.values.codigo}
+          onChange={formik.handleChange}
         />
-        <Select
+        <SelectNomal
           label="Semestre"
           name="semestre"
           placeholder="Semestre"
           values={Array.from({ length: 10 }, (_, i) => ({ value: (i + 1).toString(), name: (i + 1).toString() }))}
+          value={formik.values.semestre}
+          onChange={formik.handleChange}
         />
       </div>
       <div className={styles.formGroupContainer}>
-        <Input
+        <InputNormal
           label="Programa Académico"
           type="text"
           name="Programa"
           placeholder="Programa Académico"
+          value={formik.values.Programa}
+          onChange={formik.handleChange}
         />
-        <Select
+        <SelectNomal
           label={"Rol"}
           name="isAdmin"
           placeholder="Rol"
+          value={formik.values.isAdmin}
+          onChange={formik.handleChange}
           values={[
             { value: "true", name: "Administrador" },
             { value: "false", name: "Usuario" },
@@ -68,4 +85,4 @@ const UserFormFields = () => {
   )
 }
 
-export default UserFormFields
+export default UserFormUpdateFields

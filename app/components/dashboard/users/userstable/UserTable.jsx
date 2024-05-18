@@ -7,13 +7,35 @@ import { BiEdit } from "react-icons/bi";
 import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { getUsers } from "@api";
+import { deleteUser, getUsers } from "@api";
 import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
+import { toast } from "react-toastify";
+import Modal from "@/app/components/modal/Modal";
 
 const UserTable = () => {
     const [data, setData] = useState([]);
     const { data: session } = useSession();
+    const [openModal, setOpenModal] = useState(false);
+    const [id, setId] = useState(null);
     const [pending, setPending] = useState(true);
+
+    const handleDelete = async (id) => {
+      setOpenModal(true);
+      setId(id);
+  
+    };
+  
+    const closeModal = () => {
+      setOpenModal(false);
+    }
+  
+    const onDeleted = async () => {
+      setOpenModal(false);
+      await deleteUser(session?.user?.data.token, id, toast);
+      const data = await getUsers(session?.user?.data.token);
+      setData(data);
+    };
+
     const columnas = [
         {
           name: "Nombre",
@@ -54,10 +76,10 @@ const UserTable = () => {
           name: "Acciones",
           cell: (row) => (
             <div className={styles.btns}>
-              <Link  href="/" className={styles.btnEdit}>
+              <Link  href={"/users/update/" + row._id} className={styles.btnEdit}>
                 <BiEdit size={20}  />
               </Link>
-              <button className={styles.btnDelete}>
+              <button className={styles.btnDelete}  onClick={() => handleDelete(row._id)}>
                 <RiDeleteBin6Line size={20}  />
               </button>
             </div>
@@ -110,8 +132,15 @@ const UserTable = () => {
           style={{maxWidth: 700}}
         />
       </div>
+      {openModal &&
+        <Modal
+          handleClose={closeModal}
+          action={onDeleted}
+          title="Eliminar Usuario"
+          message="¿Estás seguro que deseas eliminar este usuario?"
+        />}
     </div>
-  )
+  );
 }
 
-export default UserTable
+export default UserTable;

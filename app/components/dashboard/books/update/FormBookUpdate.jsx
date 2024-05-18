@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
 import schemaUpdateBook from './schemaValidateBookUpdate';
 import BookUpdateFormFields from './bookupdateformfields/BookUpdateFormFields';
+import Formheader from '@/app/components/forms/formheader/Formheader';
 
 const FormBookUpdate = ({ id }) => {
   const router = useRouter();
@@ -28,7 +29,6 @@ const FormBookUpdate = ({ id }) => {
 
   useEffect(() => {
     if (book && Object.keys(book).length > 0) {
-
       formik.setValues({
         title: book.title,
         subtitulo: book.subtitulo,
@@ -92,12 +92,7 @@ const FormBookUpdate = ({ id }) => {
 
   return (
     <div className={styles.bookFormContainer}>
-      <div className={styles.header}>
-        <div className={styles.icon}>
-          <RiEdit2Line />
-        </div>
-        <span className={styles.span}>Actualizar libro</span>
-      </div>
+     <Formheader icon={<RiEdit2Line />} text="Actualizar libro" />
       <form onSubmit={formik.handleSubmit} className={styles.bookForm}>
         {
           book ?

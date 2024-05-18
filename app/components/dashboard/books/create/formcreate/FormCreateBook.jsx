@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useSession } from 'next-auth/react';
 import schemaCreateBook from './SchemaValidateCreateBook';
 import BooksFormFields from './booksformfields/BooksFormFields';
+import Formheader from '@/app/components/forms/formheader/Formheader';
 
 
 const FormCreateBook = () => {
@@ -53,12 +54,7 @@ const FormCreateBook = () => {
 
   return (
     <div className={styles.bookFormContainer}>
-      <div className={styles.header}>
-        <div className={styles.icon}>
-          <BiBookAdd />
-        </div>
-        <span className={styles.span}>Añadir un libro</span>
-      </div>
+      <Formheader icon={<BiBookAdd />} text="Crear libro" />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}

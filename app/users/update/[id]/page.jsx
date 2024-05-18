@@ -1,15 +1,15 @@
-import FormCreateUser from "@/app/components/dashboard/users/create/FormCreateUser";
+import FormUpdateUser from "@/app/components/dashboard/users/update/FormUpdateUser";
 import styles from "./page.module.css";
 import PrivateAdminRoute from "@/app/components/PrivateAdminRoute";
 
-const UsersCreatePage = () => {
+const page = ({ params }) => {
   return (
     <PrivateAdminRoute>
       <div className={styles.container}>
-        <FormCreateUser />
+        <FormUpdateUser id={params.id} />
       </div>
     </PrivateAdminRoute>
   );
 }
 
-export default UsersCreatePage;
+export default page;

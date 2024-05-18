@@ -12,6 +12,7 @@ import moment from "moment";
 import SelectNomal from "@/app/components/forms/selectNormal/SelectNormal";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import Formheader from "@/app/components/forms/formheader/Formheader";
 
 const FormUpdateReservation = ({ id }) => {
   const { data: session, status } = useSession();
@@ -101,12 +102,7 @@ const FormUpdateReservation = ({ id }) => {
 
   return (
     <div className={styles.reservaFormContainer}>
-      <div className={styles.header}>
-        <div className={styles.icon}>
-          <RiEdit2Line />
-        </div>
-        <span className={styles.span}>Actualizar Reservacion</span>
-      </div>
+      <Formheader icon={<RiEdit2Line />} text="Actualizar reservacion" />
       <form onSubmit={formik.handleSubmit} className={styles.bookForm}>
         <div className={styles.formGroupContainer}>
           <InputFilter
@@ -165,7 +161,6 @@ const FormUpdateReservation = ({ id }) => {
               { value: 'Interno', name: 'Interno' },
               { value: 'Externo', name: 'Externo' },
             ]}
-
             onChange={formik.handleChange}
           />
         </div>

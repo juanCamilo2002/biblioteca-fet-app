@@ -67,6 +67,7 @@
 
     .body{
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
@@ -77,49 +78,51 @@
       }
     }
 
-    .footer{
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
+    
+  }
+}
 
-     .cancel{
-        padding: 10px 20px;
-        background-color: gray;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        border: none;
+.footer{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 
-        &:hover{
-          background-color: #9b9a9a;
-        }
-      }
+  .btnCancel{
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
 
-      .ok{
-        padding: 10px 20px;
-        background-color: green;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        border: none;
-
-        &:hover{
-          background-color: darkgreen;
-        }
-     }
-
-     .delete{
-        padding: 10px 20px;
-        background-color: green;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        border: none;
-
-        &:hover{
-          background-color: darkgreen;
-        }
-     }
+    &:hover{
+      background-color: #9b9a9a;
     }
   }
+
+  .ok{
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover{
+      background-color: darkgreen;
+    }
+ }
+
+ .btnAccept{
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+
+    &:hover{
+      background-color: darkgreen;
+    }
+ }
 }

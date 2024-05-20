@@ -8,9 +8,10 @@ const Input = ({ label, name, type, value, flex }) => {
       <Field
         className={`${styles.input} ${flex ? styles.flex : ""}`}
         type={type ? type : "text"}
-        id={name} name={name}
+        id={name}
+        name={name}
         value={value}
-        
+
       />
       <ErrorMessage name={name} component="div" className={styles.error} />
     </div>

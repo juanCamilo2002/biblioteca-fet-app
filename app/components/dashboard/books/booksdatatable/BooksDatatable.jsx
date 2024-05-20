@@ -11,6 +11,7 @@ import Modal from "@/app/components/modal/Modal";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
+import { MdDeleteOutline } from "react-icons/md";
 
 
 const BooksDatatable = () => {
@@ -22,7 +23,7 @@ const BooksDatatable = () => {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      setPending(true); 
+      setPending(true);
       const data = await getBooks();
       setBooks(data);
       setPending(false);
@@ -114,16 +115,18 @@ const BooksDatatable = () => {
           pagination
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
-          progressPending={pending} 
-          progressComponent={<LoadingDatatable/>}
+          progressPending={pending}
+          progressComponent={<LoadingDatatable />}
         />
       </div>
       {openModal &&
         <Modal
+          icon={<MdDeleteOutline />}
           handleClose={closeModal}
           action={onDeleted}
           title="Eliminar libro"
           message="¿Estás seguro que deseas eliminar este libro?"
+          actionText={"Eliminar"}
         />}
     </div>
   );

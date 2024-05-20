@@ -18,7 +18,7 @@ const ReservationTable = () => {
   const [data, setData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [pending, setPending] = useState(true);
-  
+
   const [id, setId] = useState(null);
 
   const handleDelete = async (id) => {
@@ -118,16 +118,18 @@ const ReservationTable = () => {
           pagination
           paginationComponentOptions={paginationComponentOptions}
           fixedHeader
-          progressPending={pending} 
-          progressComponent={<LoadingDatatable/>}
+          progressPending={pending}
+          progressComponent={<LoadingDatatable />}
         />
       </div>
       {openModal &&
         <Modal
+          icon={<RiDeleteBin6Line />}
           handleClose={closeModal}
           action={onDeleted}
           title="Eliminar Reservación"
           message="¿Estás seguro que deseas eliminar esta reservacion?"
+          actionText={"Eliminar"}
         />}
     </div>
   )

@@ -2,14 +2,16 @@ import styles from "./modal.module.css";
 import { MdDeleteOutline } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
 
-const Modal = ({title, handleClose, action, message }) => {
+
+
+const Modal = ({ icon, title, handleClose, action, message, children, actionText, hiddenAction }) => {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
         <div className={styles.top}>
           <div className={styles.left}>
             <div className={styles.icon}>
-              <MdDeleteOutline />
+             {icon}
             </div>
             <h2 className={styles.title}>{title}</h2>
           </div>
@@ -21,12 +23,18 @@ const Modal = ({title, handleClose, action, message }) => {
         </div>
         <div className={styles.body}>
           <p className={styles.p}>{message}</p>
+          {children}
         </div>
-        <div className={styles.footer}>
-          <button className={styles.cancel} onClick={handleClose}>Cancelar</button>
-          <button className={styles.delete} onClick={action}>Eliminar</button>
-        </div>
+        {
+          !hiddenAction && (
+            <div className={styles.footer}>
+              <button className={styles.btnCancel} onClick={handleClose}>Cancelar</button>
+              <button className={styles.btnAccept} onClick={action}>{actionText}</button>
+            </div>
+          )
+        }
       </div>
+
     </div>
   );
 }

@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.titleReport{
+    margin: 20px 0;
+    font-weight: 600;
+    font-size: 25px;
+    color: #333;
+}
+
+.btnReport{
+    display: flex;
+    justify-content: center;
+}
+
+.btnReport button{
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    margin-top: 50px;
+    padding: 14px;
+    border-radius: 5px;
+    background-color: var(--bg-green);
+    margin-bottom: 6px;
+    padding-right: 16px;
+    color: var(--bg-white);
+}
+
+.btnReport button:hover{
+    background-color: var(--bg-green-dark);
+}
+
+.btnOption{
+    margin-right: 20px;
+    padding: 6px;
+    cursor: pointer;
+    margin-bottom: 14px;
+    border-radius: 5px;
+    outline: none;
+}

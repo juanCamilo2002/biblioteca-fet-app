@@ -1,8 +1,14 @@
-.bookCardContainer{
+.bookCardContainer {
     padding: 20px 60px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: stretch;
-    gap: 16px; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px); 
+    gap: 16px;
+    justify-content: space-between; 
+}
+
+@media screen and (max-width: 768px) {
+    .bookCardContainer {
+        justify-content: center; /* Centra las tarjetas */
+    }
+    
 }

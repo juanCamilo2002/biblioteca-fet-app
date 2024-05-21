@@ -1,41 +1,71 @@
+"use client";
 import Image from "next/image";
 import styles from "./viewbook.module.css";
 import { IoIosHeartEmpty } from "react-icons/io";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { getBook } from "@api";
+import moment from "moment";
+import "moment/locale/es";
 
-const ViewBook = () => {
+const ViewBook = ({ params }) => {
+  const [book, setBook] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getBook(params.id);
+        setBook(data);
+      } catch (error) {
+        toast.error("Error al cargar el libro");
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.left}>
           <Image
-            src="https://via.placeholder.com/350x500/124335"
-            width={350}
-            height={500}
+            src={book.image ? book.image : "https://via.placeholder.com/350x500/124335"}
+            width={400}
+            height={560}
             alt="Book"
-            className={styles.image}
+            style={
+              {
+                width: "400px",
+                height: "600px",
+                borderRadius: "5px",
+                objectFit: "cover",
+              }
+            }
+
           />
         </div>
         <div className={styles.right}>
-          <h2>Make It Happen: Surrender Your Fear. Take The Leap. Live On Purpose</h2>
-          <p className={styles.desc}>Make It Happen Is the history of how I surrendered my fear,
-            took the leap and got a life in my case, a perfectly, fuffilling life as mama, a working
-            woman and a greatful
+          <h2>{book.title}</h2>
+          <p className={styles.desc}>
+            {book.description}
           </p>
 
           <div className={styles.detailsContainer}>
             <div className={styles.leftDetails}>
-              <span className={styles.itemDetail}>PUBLISHER</span>
-              <span className={styles.itemDetail}>FIRST PUBLISHER </span>
+              <span className={styles.itemDetail}>Editorial</span>
+              <span className={styles.itemDetail}>Fecha de publicación </span>
               <span className={styles.itemDetail}>ISBN</span>
-              <span className={styles.itemDetail}>LANGUAGE</span>
-              <span className={styles.itemDetail}>PAGES</span>
+              <span className={styles.itemDetail}>Autor</span>
+              <span className={styles.itemDetail}>Lenguaje</span>
+              <span className={styles.itemDetail}>Páginas</span>
             </div>
             <div className={styles.rightDetails}>
-              <span className={styles.itemDetailValue}>Thomas Nelson Inc</span>
-              <span className={styles.itemDetailValue}>December 30th 2014</span>
-              <span className={styles.itemDetailValue}>0718022394-9780718022396</span>
-              <span className={styles.itemDetailValue}>Thomas Nelson Inc</span>
-              <span className={styles.itemDetailValue}>200 P</span>
+              <span className={styles.itemDetailValue}>{book.publisher}</span>
+              <span className={styles.itemDetailValue}>
+                {moment(book.fechaPublicacion).locale('es').format('D [de] MMMM [de] YYYY')}
+              </span>
+              <span className={styles.itemDetailValue}>{book.ISBN}</span>
+              <span className={styles.itemDetailValue}>{book.author?.name}</span>
+              <span className={styles.itemDetailValue}>{book.language}</span>
+              <span className={styles.itemDetailValue}>{book.numberPages} P</span>
             </div>
 
           </div>

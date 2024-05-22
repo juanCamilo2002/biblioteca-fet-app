@@ -77,7 +77,8 @@ function ReportTable() {
             <option >Diciembre</option>
           </select> 
           <select  className={styles.btnOption}>
-            <option >Tipo</option>
+            <option >Año</option>
+            <option >2024</option>
           </select> 
         
         </div>

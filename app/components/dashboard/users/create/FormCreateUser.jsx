@@ -12,8 +12,8 @@ import schemaCreateUser from "./SchemaValidations";
 import Formheader from "@/app/components/forms/formheader/Formheader";
 
 const FormCreateUser = () => {
-    const { data: session } = useSession();
-    const router = useRouter();
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const initialValues = {
     name: '',
@@ -38,7 +38,7 @@ const FormCreateUser = () => {
 
   return (
     <div className={styles.container}>
-     <Formheader icon={<BiBookAdd />} text="Añadir usuario" />
+      <Formheader icon={<BiBookAdd />} text="Añadir usuario" />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}

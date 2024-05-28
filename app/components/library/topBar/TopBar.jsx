@@ -8,7 +8,7 @@ import NavBar from './navbar/NavBar';
 import { signOut, useSession } from 'next-auth/react';
 
 const TopBar = () => {
-    const {  status } = useSession();
+    const { status } = useSession();
     const handleLogout = async () => {
         await signOut({
             redirect: true,
@@ -41,7 +41,6 @@ const TopBar = () => {
                         <button onClick={handleLogout} className={styles.btnSesion}>Salir</button>
                     ) : <Link href="/login" className={styles.btnSesion}>Entrar</Link>}
                 </div>
-
             </div>
             <NavBar />
         </div>

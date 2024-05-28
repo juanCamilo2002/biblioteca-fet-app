@@ -1,60 +1,76 @@
 "use client"
+import { toast } from 'react-toastify'
 import styles from './report.module.css'
 import DataTable from 'react-data-table-component'
+import { getReport, getReportData } from '@api'
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+
 
 function ReportTable() {
+  const { data:session } = useSession();
+  const [dataReport, setDataReport] = useState([]);
 
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await getReportData(session.user.data.token);
+          setDataReport(response.data);
+        } catch (error) {
+          toast.error("Ha ocurrido un error");
+        }
+      };
+      fetchData();
+  }, []);
+  console.log(dataReport)
   const columns =[
     {
       name: "Nombre",
-      selector: (row) => row.nombre,
+      selector: (row) => row.userData.name,
       sortable: true
     },
     {
       name: "Semestre",
-      selector: (row) => row.semestre,
+      selector: (row) => row.userData.semestre,
       sortable: true
     },
     {
       name: "Ciclo",
-      selector: (row) => row.ciclo,
+      selector: (row) => row.userData.ciclo,
       sortable: true
     },
     {
       name: "Programa",
-      selector: (row) => row.programa,
+      selector: (row) => row.userData.Programa,
       sortable: true
     },
     {
       name: "Genero",
-      selector: (row) => row.genero,
+      selector: (row) => row.userData.genero,
       sortable: true
     },
     {
       name: "Cantidad de libros",
-      selector: (row) => row.libros,
+      selector: (row) => row.countReservations,
       sortable: true
     }
   ]
 
-  const datos = [
-    {
-    nombre: 'Joan Galindo',
-    semestre: 'Noveno',
-    ciclo: 'Profesional',
-    programa: 'Software',
-    genero: 'Masculino',
-    libros: 3
-    },
-    
-  ]
-
+ 
   const paginationComponentOptions = {
     rowsPerPageText: 'Filas por página',
     rangeSeparatorText: 'de',
     selectAllRowsItem: true,
     selectAllRowsItemText: 'Todos',
   };
+
+  const handleReport = async () =>{
+    try{
+      await getReport(session.user.data.token, toast);
+    }catch(e){
+      toast.error("Ha ocurrido un error")
+    }
+  }
 
   return (
     <div>
@@ -85,13 +101,13 @@ function ReportTable() {
        
       <DataTable
       columns={columns}
-      data={datos}
+      data={dataReport}
       paginationPerPage={5}
       pagination
       paginationComponentOptions={paginationComponentOptions}
       />
       <div className={styles.btnReport}>
-        <button>Generar Reporte</button>
+        <button onClick={handleReport}>Generar Reporte</button>
       </div>
     </div>
     </div>

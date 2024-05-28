@@ -42,7 +42,7 @@ const TableNews = () => {
                   >
                     <td className={styles.tableBodyCell}>
                       <div className={`${styles.divCell} ${styles.firstCell}`}>
-                        {reservation.userId.name}
+                        {reservation.userId?.name}
                       </div>
                     </td>
                     <td className={styles.tableBodyCell}>

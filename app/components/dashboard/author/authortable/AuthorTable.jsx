@@ -47,7 +47,7 @@ function AuthorTable() {
       name: "Acciones",
       cell: (row) => (
         <div className={styles.btns}>
-          <button  className={styles.btnEdit} onClick={()=>handleUpdate(row)}>
+          <button className={styles.btnEdit} onClick={() => handleUpdate(row)}>
             <BiEdit size={20} />
           </button>
           <button className={styles.btnDelete} onClick={() => handleDelete(row._id)}>
@@ -106,7 +106,7 @@ function AuthorTable() {
       await updateAuthor(session.user.data.token, id, values, toast);
       const data = await getAuthors();
       setAuthors(data);
-    }catch (error) {
+    } catch (error) {
       toast.error("Error al editar el autor");
     }
   }

@@ -1,0 +1,29 @@
+.container{
+    width: 210px;
+    /* border: 1px solid var(--bg-gray); */
+    border-radius: 5px;
+    padding: 14px;
+}
+
+.aside{
+    display: flex;
+    flex-direction: column;
+}
+.aside h4{
+    font-size: 20px;
+    margin: 15px 0px;
+}
+.aside p{
+    font-size: 16px;
+    padding-bottom: 8px;
+    cursor: pointer;
+}
+.aside p:hover{
+    color: #005D03;
+    font-size: 17px;
+    transition: all ease 0.2s;
+}
+.aside div {
+    padding: 0 10px;
+    border-top: 1px solid var(--bg-gray);
+}

@@ -83,7 +83,6 @@ function ReportTable() {
         
         </div>
         
-       
       <DataTable
       columns={columns}
       data={datos}

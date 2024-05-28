@@ -5,8 +5,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 400px;
-    min-width: 200px;
+   
+    
     flex-wrap: wrap;
     background-color: var(--bg-white);
     border-radius: 5px;

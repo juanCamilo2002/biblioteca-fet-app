@@ -1,7 +1,6 @@
 import Input from "@/app/components/forms/input/Input";
 import styles from "./userformfields.module.css";
 import Select from "@/app/components/forms/select/Select";
-import { ErrorMessage, Field } from "formik";
 
 const UserFormFields = () => {
   return (
@@ -22,15 +21,24 @@ const UserFormFields = () => {
         />
       </div>
       <div className={styles.formGroupContainer}>
-        <div className={styles.inputContainer}>
-          <label htmlFor="email" className={styles.label}>Correo Electrónico </label>
-          <Field
-            type="email"
-            name="email"
-            className={styles.input}
-          />
-          <ErrorMessage name="email" component="div" className={styles.error} />
-        </div>
+
+        <Input
+          label="Correo Electrónico"
+          type="email"
+          name="email"
+          placeholder="Correo Electrónico"
+        />
+        <Select
+          label="Genero"
+          name="genero"
+          placeholder="genero"
+          values={[
+            { value: "Hombre", name: "Hombre" },
+            { value: "Mujer", name: "Mujer" },
+            { value: "Otro", name: "otro" },
+          ]}
+        />
+
 
       </div>
       <div className={styles.formGroupContainer}>

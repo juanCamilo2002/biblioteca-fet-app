@@ -2,7 +2,6 @@
 import InputNormal from "@/app/components/forms/inputNormal/InputNormal";
 import styles from "./userformupdatefields.module.css";
 import SelectNomal from "@/app/components/forms/selectNormal/SelectNormal";
-import { ErrorMessage } from "formik";
 
 const UserFormUpdateFields = ({ formik }) => {
   return (
@@ -27,20 +26,26 @@ const UserFormUpdateFields = ({ formik }) => {
         />
       </div>
       <div className={styles.formGroupContainer}>
-        <div className={styles.inputContainer}>
-          <label htmlFor="email" className={styles.label}>Correo Electrónico </label>
-          <input
-            type="email"
-            name="email"
-            className={styles.input}
-            placeholder="Correo Electrónico"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-          />
-          <div className={styles.error}>
-          </div>
-        </div>
-
+        <InputNormal
+          label="Código"
+          type="email"
+          name="email"
+          placeholder="Correo Electrónico"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+        />
+         <SelectNomal
+          label="Genero"
+          name="genero"
+          placeholder="Genero"
+          values={[
+            { value: "Hombre", name: "Hombre" },
+            { value: "Mujer", name: "Mujer" },
+            { value: "Otro", name: "otro" },
+          ]}
+          value={formik.values.genero}
+          onChange={formik.handleChange}
+        />
       </div>
       <div className={styles.formGroupContainer}>
         <InputNormal

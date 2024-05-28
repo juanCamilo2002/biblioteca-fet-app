@@ -5,7 +5,7 @@ const schemaCreateUser = Yup.object().shape({
     .required('Nombre es requerido'),
   email: Yup.string()
     .email('Correo electrónico no válido')
-    .test('is-fet-domain', 'El dominio del correo electrónico debe ser @fet.edu.co', (value) => {
+    .test('is-fet-domain', 'El dominio permitido @fet.edu.co', (value) => {
       if (!value) return true;
       return value.endsWith('@fet.edu.co');
     })

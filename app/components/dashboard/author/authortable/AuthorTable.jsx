@@ -13,10 +13,12 @@ import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDa
 import ModalCreateAuthor from "../create/ModalCreateAuthor";
 import { MdDeleteOutline } from "react-icons/md";
 import ModalUpdateAuthor from "../update/ModalUpdateAuthor";
+import { MdInput } from "react-icons/md";
 
 function AuthorTable() {
   const [authors, setAuthors] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalInactive, setOpenModalInactive] = useState(false);
+  const [openModalActive, setOpenModalActive] = useState(false);
   const [openModalCreate, setOpenModalCreate] = useState(false);
   const [openModalUpdate, setOpenModalUpdate] = useState(false);
   const [authorSelected, setAuthorSelected] = useState({});
@@ -44,15 +46,28 @@ function AuthorTable() {
       sortable: true,
     },
     {
+      name: "Estado",
+      selector: (row) => row.status ? "Activo" : "Inactivo",
+      sortable: true,
+    },
+    {
       name: "Acciones",
       cell: (row) => (
         <div className={styles.btns}>
           <button className={styles.btnEdit} onClick={() => handleUpdate(row)}>
             <BiEdit size={20} />
           </button>
-          <button className={styles.btnDelete} onClick={() => handleDelete(row._id)}>
-            <RiDeleteBin6Line size={20} />
-          </button>
+          {
+            row.status ? (
+              <button className={styles.btnDelete} onClick={() => handleInactive(row._id)}>
+                <RiDeleteBin6Line size={20} />
+              </button>
+            ):(
+              <button className={styles.btnActive} onClick={() => handleActive(row._id)}>
+              <MdInput size={20} />
+            </button>
+            )
+          }
         </div>
       ),
     },
@@ -66,21 +81,33 @@ function AuthorTable() {
 
   };
 
-  const handleDelete = async (id) => {
-    setOpenModal(true);
+  const handleInactive = async (id) => {
+    setOpenModalInactive(true);
+    setId(id);
+
+  };
+  const handleActive = async (id) => {
+    setOpenModalActive(true);
     setId(id);
 
   };
 
   const closeModal = () => {
-    setOpenModal(false);
+    setOpenModalInactive(false);
+    setOpenModalActive(false);
     setOpenModalCreate(false);
     setOpenModalUpdate(false);
   }
 
-  const onDeleted = async () => {
-    setOpenModal(false);
-    await deleteAuthor(session.user.data.token, id, toast);
+  const onInactive = async () => {
+    setOpenModalInactive(false);
+    await updateAuthor(session.user.data.token, id, { status: false }, toast);
+    const data = await getAuthors();
+    setAuthors(data);
+  };
+  const onActive = async () => {
+    setOpenModalActive(false);
+    await updateAuthor(session.user.data.token, id, { status: true }, toast);
     const data = await getAuthors();
     setAuthors(data);
   };
@@ -132,14 +159,24 @@ function AuthorTable() {
           fixedHeader
         />
       </div>
-      {openModal &&
+      { openModalInactive &&
         <Modal
           icon={<MdDeleteOutline />}
           handleClose={closeModal}
-          action={onDeleted}
-          title="Eliminar Autor"
-          message="¿Estás seguro que deseas eliminar este autor?"
-          actionText={"Eliminar"}
+          action={() => onInactive()}
+          title="Desactivar Autor"
+          message="¿Deseas desactivar a este autor??"
+          actionText="Desactivar"
+          hiddenAction={false}
+        />}
+      { openModalActive &&
+        <Modal
+          icon={<MdInput />}
+          handleClose={closeModal}
+          action={() => onActive()}
+          title="Activar Autor"
+          message="¿Deseas Activar a este autor??"
+          actionText="Activar"
           hiddenAction={false}
         />}
       {

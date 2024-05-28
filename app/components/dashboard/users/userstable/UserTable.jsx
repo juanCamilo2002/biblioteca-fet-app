@@ -7,32 +7,48 @@ import { BiEdit } from "react-icons/bi";
 import DataTable from "react-data-table-component";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { deleteUser, getUsers } from "@api";
+import { getUsers, updateUser } from "@api";
 import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
 import { toast } from "react-toastify";
 import Modal from "@/app/components/modal/Modal";
 import { MdDeleteOutline } from "react-icons/md";
+import { MdInput } from "react-icons/md";
 
 const UserTable = () => {
   const [data, setData] = useState([]);
   const { data: session } = useSession();
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalInactive, setOpenModalInactive] = useState(false);
+  const [openModalActive, setOpenModalActive] = useState(false);
   const [id, setId] = useState(null);
   const [pending, setPending] = useState(true);
 
-  const handleDelete = async (id) => {
-    setOpenModal(true);
+  const handleInactive = async (id) => {
+    setOpenModalInactive(true);
+    setId(id);
+
+  };
+
+  const handleActive = async (id) => {
+    setOpenModalActive(true);
     setId(id);
 
   };
 
   const closeModal = () => {
-    setOpenModal(false);
+    setOpenModalInactive(false);
+    setOpenModalActive(false);
+
   }
 
-  const onDeleted = async () => {
-    setOpenModal(false);
-    await deleteUser(session?.user?.data.token, id, toast);
+  const onInactive = async () => {
+    setOpenModalInactive(false);
+    await updateUser(session?.user?.data.token, id, { status: false }, toast);
+    const data = await getUsers(session?.user?.data.token);
+    setData(data);
+  };
+  const onActive = async () => {
+    setOpenModalActive(false);
+    await updateUser(session?.user?.data.token, id, { status: true }, toast);
     const data = await getUsers(session?.user?.data.token);
     setData(data);
   };
@@ -80,9 +96,15 @@ const UserTable = () => {
           <Link href={"/users/update/" + row._id} className={styles.btnEdit}>
             <BiEdit size={20} />
           </Link>
-          <button className={styles.btnDelete} onClick={() => handleDelete(row._id)}>
-            <RiDeleteBin6Line size={20} />
-          </button>
+          {row.status ? (
+            <button className={styles.btnDelete} onClick={() => handleInactive(row._id)}>
+              <RiDeleteBin6Line size={20} />
+            </button>
+          ) : (
+            <button className={styles.btnActive} onClick={() => handleActive(row._id)}>
+              <MdInput size={20} />
+            </button>
+          )}
         </div>
       ),
     },
@@ -133,14 +155,23 @@ const UserTable = () => {
           style={{ maxWidth: 700 }}
         />
       </div>
-      {openModal &&
+      {openModalInactive &&
         <Modal
           icon={<MdDeleteOutline />}
           handleClose={closeModal}
-          action={onDeleted}
-          title="Eliminar Usuario"
-          message="¿Estás seguro que deseas eliminar este usuario?"
-          actionText={"Eliminar"}
+          action={onInactive}
+          title="Desactivar Usuario"
+          message="¿Estás seguro que deseas desactivar este usuario?"
+          actionText="Desactivar"
+        />}
+      {openModalActive &&
+        <Modal
+          icon={<MdDeleteOutline />}
+          handleClose={closeModal}
+          action={onActive}
+          title="Activar Usuario"
+          message="¿Estás seguro que deseas activar este usuario?"
+          actionText="Activar"
         />}
     </div>
   );

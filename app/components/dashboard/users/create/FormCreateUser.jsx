@@ -21,6 +21,7 @@ const FormCreateUser = () => {
     telefono: '',
     semestre: '',
     codigo: '',
+    genero: '',
     Programa: '',
     isAdmin: '',
   };

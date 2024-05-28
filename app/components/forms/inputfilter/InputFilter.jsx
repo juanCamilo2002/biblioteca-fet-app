@@ -46,7 +46,7 @@ const InputFilter = ({ values, selectedValue, onValueSelect, placeholder, name, 
   }, [inputValue, onValueSelect]);
 
   const filteredValues = values.filter(value =>
-    value[selectedValue].toLowerCase().includes(inputValue.toLowerCase())
+    value[selectedValue].toLowerCase().includes(inputValue.toLowerCase()) && value.status !== false
   );
 
   return (

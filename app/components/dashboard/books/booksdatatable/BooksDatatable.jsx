@@ -1,5 +1,5 @@
 "use client";
-import { deleteBook, getBooks } from "@api";
+import { deleteBook, getBooks, updateBook } from "@api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
@@ -12,11 +12,13 @@ import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import LoadingDatatable from "@/app/components/loading/loadindatatable/LoadingDatatable";
 import { MdDeleteOutline } from "react-icons/md";
+import { MdInput } from "react-icons/md";
 
 
 const BooksDatatable = () => {
   const [books, setBooks] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalActive, setOpenModalActive] = useState(false);
+  const [openModalInactive, setOpenModalInactive] = useState(false);
   const [pending, setPending] = useState(true);
   const [id, setId] = useState(null);
   const { data: session } = useSession();
@@ -31,19 +33,33 @@ const BooksDatatable = () => {
     fetchBooks();
   }, []);
 
-  const handleDelete = async (id) => {
-    setOpenModal(true);
+  const handleInactive = async (id) => {
+    setOpenModalInactive(true);
     setId(id);
 
   };
 
+  const handleActive = async (id) => {
+    setOpenModalActive(true);
+    setId(id);
+
+  };
+
+
   const closeModal = () => {
-    setOpenModal(false);
+    setOpenModalInactive(false);
+    setOpenModalActive(false);
   }
 
-  const onDeleted = async () => {
-    setOpenModal(false);
-    await deleteBook(session.user.data.token, id, toast);
+  const onInactive = async () => {
+    setOpenModalInactive(false);
+    await updateBook(session.user.data.token,id, { status: false }, toast);
+    const data = await getBooks();
+    setBooks(data);
+  };
+  const onActive = async () => {
+    setOpenModalActive(false);
+    await updateBook(session.user.data.token,id, { status: true }, toast);
     const data = await getBooks();
     setBooks(data);
   };
@@ -85,9 +101,16 @@ const BooksDatatable = () => {
           <Link href={"/books/update/" + row._id} className={styles.btnEdit} >
             <BiEdit size={20} />
           </Link>
-          <button className={styles.btnDelete} onClick={() => handleDelete(row._id)}>
-            <RiDeleteBin6Line size={20} />
-          </button>
+          {
+            row.status ?
+              <button className={styles.btnDelete} onClick={() => handleInactive(row._id)}>
+                <RiDeleteBin6Line size={20} />
+              </button>
+              :
+              <button className={styles.btnActive} onClick={() => handleActive(row._id)}>
+                <MdInput size={20} />
+              </button>
+          }
         </div>
       ),
     },
@@ -119,14 +142,23 @@ const BooksDatatable = () => {
           progressComponent={<LoadingDatatable />}
         />
       </div>
-      {openModal &&
+      {openModalInactive &&
         <Modal
           icon={<MdDeleteOutline />}
           handleClose={closeModal}
-          action={onDeleted}
-          title="Eliminar libro"
-          message="¿Estás seguro que deseas eliminar este libro?"
-          actionText={"Eliminar"}
+          action={onInactive}
+          title="Desactivar libro"
+          message="¿Estás seguro que deseas Desactivar este libro?"
+          actionText="Desactivar"
+        />}
+      {openModalActive &&
+        <Modal
+          icon={<MdDeleteOutline />}
+          handleClose={closeModal}
+          action={onActive}
+          title="Activar libro"
+          message="¿Estás seguro que deseas Activar este libro?"
+          actionText="Activar"
         />}
     </div>
   );

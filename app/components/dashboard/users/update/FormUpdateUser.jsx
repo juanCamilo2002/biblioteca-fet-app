@@ -34,6 +34,7 @@ const FormUpdateUser = ({ id }) => {
     semestre: user.semestre,
     Programa: user.Programa,
     isAdmin: user.isAdmin,
+    genero: user.genero,
   };
 
   const formik = useFormik({

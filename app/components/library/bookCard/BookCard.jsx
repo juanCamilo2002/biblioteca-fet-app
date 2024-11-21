@@ -6,7 +6,6 @@ import { CiHeart } from 'react-icons/ci';
 const BookCard = ({ book }) => {
   return (
     <div className={styles.card}>
-      <CiHeart size={30} color="white" className={styles.heartIcon} />
       <Image
         src={book.image ? book.image : "https://via.placeholder.com/250x300/CBC7C68"}
         alt=""

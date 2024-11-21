@@ -4,9 +4,13 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    background-color: #d8fad1;
+    background-color: rgb(12,159,15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column; /* Asegura que todos los elementos se apilen verticalmente */
+    justify-content: space-between; /* Coloca el contenido y el botón en extremos opuestos */
+    height: 100%; /* Asegura que la tarjeta ocupe todo el espacio posible */
 }
 
 .card:hover {
@@ -30,18 +34,19 @@
 
 .content {
     padding: 16px;
+    flex-grow: 1; /* Permite que el contenido crezca para ocupar el espacio disponible */
 }
 
 .title {
     font-size: 18px;
-    color: #333;
+    color: #ffffff;
     margin: 0;
     margin-bottom: 8px;
 }
 
 .category, .author {
     font-size: 14px;
-    color: #777;
+    color: #ffffff;
     margin: 0;
 }
 
@@ -49,8 +54,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 16px;
-    margin-bottom: 20px;
+    margin-top: auto; /* Empuja el contenedor del botón hacia la parte inferior */
+    margin-bottom: 20px; /* Espacio para separar del borde */
 }
 
 .btn {
@@ -58,8 +63,8 @@
     width: 90%;
     border: none;
     padding: 8px 0;
-    background-color: var(--bg-green);
-    color: white;
+    background-color: #ffffff;
+    color: rgb(3, 3, 3);
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -70,5 +75,5 @@
 }
 
 .btn:hover {
-    background-color: #005D03;
+    background-color: #ffffff;
 }

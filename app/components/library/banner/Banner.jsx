@@ -6,15 +6,15 @@ const Banner = () => {
         <div className={styles.container}>
             <div className={styles.bannerContainer}>
                 <Image
-                    src="/banner.png"
-                    alt="banner"
+                    src="/13.png"
+                    alt="13"
                     className={styles.bannerImg}
-                    width={450}
-                    height={450}
+                    width={400}
+                    height={210}
                 />
                 <div className={styles.textContainer}>
-                    <h1>Bienvenidos</h1>
-                    <span>Biblioteca universitaria</span>
+                    <h1>Biblioteca FET</h1>
+                    <span>Donde las páginas se convierten en ideas y el conocimiento trasciende fronteras</span>
                 </div>
             </div>
         </div>

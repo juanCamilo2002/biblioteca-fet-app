@@ -35,13 +35,15 @@ const TopBar = () => {
     return (
         <div className={styles.Container}>
             <div className={styles.topContainer}>
+                <Link href={"/library"}>
                 <Image
-                    src="/Logo-FET.png"
-                    alt="Logo-FET"
+                    src="/YoSoyFet.png"
+                    alt="YoSoyFet"
                     className={styles.logo}
-                    width={110}
-                    height={50}
-                />
+                    width={180}
+                    height={80}
+                /></Link>
+
                 <div className={styles.searchContainer}>
                     <input
                         type="text"
@@ -56,7 +58,6 @@ const TopBar = () => {
                 </div>
 
                 <div className={styles.savedContainer}>
-                    <FiHeart size={20} />
                     <div className={styles.savedContainerCount}>
                         <span>0</span>
                     </div>

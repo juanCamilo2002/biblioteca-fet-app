@@ -7,9 +7,6 @@ const NavBar = () => {
   return (
     <div className={styles.container}>
     <ul className={styles.list}>
-      <li>
-        <Link href={"/"} className={styles.link}>Inicio</Link>
-      </li>
      
      
     </ul>

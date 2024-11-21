@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: var(--bg-gray);
+    background-color: rgb(12, 159, 15);
     height: 300px;
     overflow: hidden;
     border-radius: 5px;
@@ -21,7 +21,7 @@
 .bannerImg{
     width: 40%;
     object-fit: contain;
-    transform: translate(0, 20%);
+    transform: translateY(-5%);
     
 }
 
@@ -36,12 +36,12 @@
 .textContainer h1{
     font-size: 4.3rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: white;
     margin-bottom: 10px;
 }
 
 .textContainer span{
     font-size: 1.5rem;
     font-weight: 400;
-    color: var(--text-light);
+    color: white;
 }

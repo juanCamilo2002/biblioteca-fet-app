@@ -96,9 +96,6 @@ const ViewBook = ({ params }) => {
             >
               {isLoading ? "Reservando..." : "Reservar"}
             </button>
-            <button className={styles.button}>
-              Añadir a lista <IoIosHeartEmpty />
-            </button>
           </div>
         </div>
       </div>

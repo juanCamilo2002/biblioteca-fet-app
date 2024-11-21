@@ -22,7 +22,7 @@ const SideBar = () => {
                 <IoIosArrowBack />
             </button>
             <div className={styles.logo}>
-                <Image src="/logo-small.png" width={90} height={50} className={styles.image} alt=""/>
+                <Image src="/logo-small.png" width={90} height={60} className={styles.image} alt=""/>
             </div>
             <div className={styles.nav}>
                 <ul className={styles.listItems}>

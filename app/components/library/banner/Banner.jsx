@@ -13,7 +13,7 @@ const Banner = () => {
                     height={450}
                 />
                 <div className={styles.textContainer}>
-                    <h1>Reserva tu libro</h1>
+                    <h1>Bienvenidos</h1>
                     <span>Biblioteca universitaria</span>
                 </div>
             </div>

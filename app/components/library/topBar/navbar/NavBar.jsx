@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styles from './navbar.module.css'
 import { IoIosArrowDown } from 'react-icons/io'
+import axios from 'axios'
 
 const NavBar = () => {
   return (
@@ -9,9 +10,7 @@ const NavBar = () => {
       <li>
         <Link href={"/"} className={styles.link}>Inicio</Link>
       </li>
-      <li>
-        <div className={styles.link} >Categorias <IoIosArrowDown /></div>
-      </li>
+     
      
     </ul>
   </div>

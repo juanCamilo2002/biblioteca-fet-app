@@ -1,0 +1,82 @@
+/* Container de las tarjetas de los libros */
+.bookCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center; /* Centrar horizontalmente */
+  padding: 40px; /* Espacio alrededor del contenedor */
+  margin: auto; /* Centrar el contenedor en la página */
+  max-width: 1200px; /* Limitar el ancho del contenedor */
+}
+
+/* Tarjeta individual del libro */
+.card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 260px; /* Ajusta el ancho según lo desees */
+  height: 500px; /* Asegura que todas las tarjetas tengan la misma altura */
+  margin: 20px; /* Espacio alrededor de cada tarjeta */
+  text-align: center;
+  transition: transform 0.2s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Asegura que el contenido se distribuya uniformemente */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Imagen del libro */
+.cover {
+  width: 100%;
+  height: 300px; /* Ajustar la altura de la imagen para ser uniforme en todas las tarjetas */
+  object-fit: cover;
+  margin-bottom: 15px; /* Espacio entre la imagen y el contenido */
+}
+
+/* Contenido de la tarjeta del libro */
+.content {
+  padding: 15px;
+  background-color: #e6ffe6; /* Color de fondo */
+  flex: 1; /* Permite que el contenido ocupe todo el espacio disponible */
+}
+
+.title {
+  font-weight: bold;
+  color: #333;
+}
+
+.category, .author {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 5px 0; /* Espacio entre cada línea de texto */
+}
+
+/* Botón "Ver Más" */
+.btn {
+  background-color: #28a745; /* Color verde */
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px; /* Espacio al final del botón */
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+/* Icono del corazón */
+.heartIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #ff4444; /* Color rojo para resaltar */
+}

@@ -62,10 +62,10 @@ function AuthorTable() {
               <button className={styles.btnDelete} onClick={() => handleInactive(row._id)}>
                 <RiDeleteBin6Line size={20} />
               </button>
-            ):(
+            ) : (
               <button className={styles.btnActive} onClick={() => handleActive(row._id)}>
-              <MdInput size={20} />
-            </button>
+                <MdInput size={20} />
+              </button>
             )
           }
         </div>
@@ -149,17 +149,25 @@ function AuthorTable() {
           </div>
         </div>
         <DataTable
-          columns={columnas}
-          data={authors}
-          paginationPerPage={5}
-          pagination
-          progressPending={pending}
-          progressComponent={<LoadingDatatable />}
-          paginationComponentOptions={paginationComponentOptions}
-          fixedHeader
+          columns={columnas} // Columnas configuradas
+          data={authors} // Datos de los autores
+          pagination // Activa la paginación
+          paginationPerPage={5} // Número de filas por página
+          progressPending={pending} // Muestra el componente de carga si está pendiente
+          progressComponent={<LoadingDatatable />} // Componente de carga personalizada
+          paginationComponentOptions={{
+            rowsPerPageText: "Filas por página",
+            rangeSeparatorText: "de",
+            selectAllRowsItem: true,
+            selectAllRowsItemText: "Todos",
+          }} // Opciones de paginación
+          fixedHeader // Cabecera fija para la tabla
+          highlightOnHover // Resalta las filas al pasar el cursor
+          responsive // Asegura la responsividad
         />
+
       </div>
-      { openModalInactive &&
+      {openModalInactive &&
         <Modal
           icon={<MdDeleteOutline />}
           handleClose={closeModal}
@@ -169,7 +177,7 @@ function AuthorTable() {
           actionText="Desactivar"
           hiddenAction={false}
         />}
-      { openModalActive &&
+      {openModalActive &&
         <Modal
           icon={<MdInput />}
           handleClose={closeModal}

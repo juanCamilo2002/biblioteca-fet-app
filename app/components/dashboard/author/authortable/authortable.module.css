@@ -1,11 +1,13 @@
-.container{
+.container {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     background-color: var(--bg-white);
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 80vh; /* Limita la altura del contenedor */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
 }
 
 
@@ -35,12 +37,12 @@
 .btnAddAuthor:hover{
     background-color: var(--bg-green-dark);
 }
-
-.btns{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
+.btns {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    gap: 10px; 
 }
 .btnEdit{
     background-color: var(--bg-green);
